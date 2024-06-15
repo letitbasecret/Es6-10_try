@@ -1,0 +1,559 @@
+<h1>Table of Content</h1>
+<ul>
+    <li>Define variables (const & let)</li>
+    <li>Template strings</li>
+    <li>string.padStart() / string.padEnd()</li>
+    <li>Arrow function</li>
+    <li>Spread Operator</li>
+    <li>Rest Operator</li>
+    <li>Default Parameter</li>
+    <li>Arry Destruction</li>
+    <li>New Userful Array Method</li>
+    <li>object destructing</li>
+    <li>Object Enhancrment</li>
+    <li>New Object method</li>
+    <li>for ...of loop</li>
+    <li>class</li>
+    <li>import/export</li>
+    <li>hash map</li>
+    <li>set</li>
+    <li>handaling error(try/catch/throw/finally)</li>
+    <li>promisses</li>
+    <li>async/await</li>
+</ul>
+
+<script>
+    console.log("hello world");
+
+    const variableName = "name";
+    const variableName = "name2"; //syntax error
+    variableName = "name3"; //syntax error
+
+    const arr = ["a", "b", "c"];
+    const arr = ["d", "e", "f"]; //syntax error
+    arr = ["g", "h", "i"]; //syntax error
+    //but
+    arr.push("k");
+
+    const obj = {
+        name: "name",
+        age: 20,
+        gender: "male",
+    };
+    const obj = {
+        name: "name2",
+        age: 20,
+        gender: "male",
+    }; //syntax error
+    //but
+    obj.name = "name3";
+    obj.age = 21;
+    obj.gender = "female";
+    obj.hobby = "football";
+
+    var x = 1; {
+        const x = 2;
+    }
+    console.log(x); //1
+
+    //let
+    let varName = "a";
+    let varName = "b"; //syntax error
+
+    //but
+    varName = "c";
+
+    var x = 1; {
+        let x = 2;
+    }
+    console.log(x);
+
+    //hosting var vs let
+
+    console.log(sayHello); //undefine
+    var sayHello = "hello world";
+    console.log(sayHello);
+
+    console.log(sayHello); //refrence error not defined
+    let sayHello = "helllo";
+    console.log(sayHello);
+
+    for (var i = 0; i < 3; i++) {
+        console.log(i);
+        setTimeout(function() {
+            console.log(i);
+        }, 2000);
+    }
+
+    console.log(i); //2
+
+    for (let i = 0; i > 3; i++) {
+        console.log(i);
+        setTimeout(function() {
+            console.log(i);
+        }, 2000);
+    }
+    console.log(i); //012
+
+    //template strings
+    let firstNmae = "priyanka";
+    let lastName = "singh";
+
+    console.log(`my name is ${firstName} ${lastName}`);
+
+    let num1 = 1;
+    let num2 = 2;
+
+    console.log(`sum of ${num1} and ${num2} is ${num1 + num2}`);
+
+    console.log(`line
+  seprate
+     possible
+         without
+             \n`);
+
+    let channleName = "priyankaSingh";
+    let baseUrl = "https:www.youtube.com/";
+    let url = `${baseUrl}channel/${channleName}/`;
+
+    //.padStart()
+    let maxLength = 15;
+    let name = "priyanka";
+    console.log(name.padStart(maxLength, "-")); //-------priyanka
+    console.log(name.padEnd(maxLength, "-")); //priyanka-------
+
+    //arrow function
+
+    let functionName = (par1, par2) => par1 + par2;
+    let fun2 = () => "hellooo world";
+    //callback
+    let arr = [1, 2, 3];
+    let arrFilter = (arr) =>
+        arr.map((value) => value * 2).filter((value) => value % 3 == 0);
+
+    arrFilter(arr);
+
+    //spread operator
+    let arr1 = [1, 2, 3];
+    let arr2 = [4, 5, 6, ...arr1, 7, 8, 9];
+    console.log(arr2);
+    //for funvtion as parameters
+
+    function fun(a, b, c) {
+        console.log(arguments);
+        return a + b + c;
+    }
+
+    let num = [1, 2, 3];
+    fun(...num);
+    fun(5, 6, ...num);
+
+    let num - [1, 2, 3];
+    Math.min(num); //NaN
+    Math.min(...num); //1
+
+    //rest operator
+    function fun(a, b, ...arrgs) {
+        console.log(a);
+        console.log(b);
+        console.log(arrgs);
+        console.log(...arrgs);
+
+    }
+
+    fun(1, 2, 3, 4, 5, 6, 7, 8, 9, 0);
+    //1
+    //2
+    //[3,4,5,6,7,8,9,0]
+    // 3 4 5 6 7 8 9 0
+
+    function smallest(...arrgs) {
+        return `smallest number ${Math.min(...arrgs)}`;
+    }
+
+    smallest(1, 2, 3, 4, 5, 6, 7, 80); //1
+
+    //default parameter
+    functio fun(a, b = 2, c = "fsd") {
+            console.log(a); //typeError
+            console.log(b); //2
+            console.log(c); //fsd
+        }
+        //array destruction
+
+    let arr = [1, 2, 3, 4, 5, 6, 7];
+    let [a, b, c, d, e, f, g] = arr;
+    console.log(a); //1
+    console.log(b); //2
+    console.log(c); //3
+    console.log(d); //4
+    ....
+
+    //array methods
+    //.includes()
+    let arr = [1, 2, 3, 4, 5];
+    console.log(arr.includes(8)); //false
+    arr.map((vales) => (value));
+    //object destruction
+
+    const obj = {
+        first: "priyanka ",
+        last: "singh",
+    }
+
+    let {
+        first,
+        last
+    } = obj;
+    console.log(first); //priyanka
+    let {
+        first: firstName,
+        last: lastName
+    } = obj;
+    console.log(firstName);
+    console.log(lastName);
+
+
+
+    const obj2 = {
+        name: "priyanka",
+        city: "dhanbad",
+        state: "jharkhand",
+        country: "india",
+    }
+
+    let {
+        state,
+        ...withoutState
+    } = obj2;
+    console.log(state);
+    console.log(withoutState);
+
+    function createperson({
+        person = {
+            name: "priyanka",
+            city: "dhanbad",
+            state: "jharkhand",
+        }
+        isFun = 0;
+    } = {}) {
+        return [person.name, person.state, person.city];
+    }
+
+    createperson();
+    createperson({
+        isFun: 1
+    });
+    createperson({
+        isFun: 1,
+        person: {
+            name: "priyanka",
+            city: "dhanbad",
+            state: "jharkhand"
+        }
+    });
+
+    //methods -assign()  , entries()  ,formEntries()
+
+    //assign()
+    const obj = {
+        name: "priyanka",
+        city: "dhanbad",
+        state: "jharkhand"
+    };
+    const obj2 = object.assign({}, obj);
+
+    obj2.name = "someting else";
+    console.log(obj.name); //priyanka
+
+    //entries()-----obj - array
+
+    const obj = {
+        name: "priyanka",
+        city: "dhanbad",
+        state: "jharkhand",
+    };
+    const arr = object.entries(obj);
+    connsole.log(arr);
+    //[["name","priyanka"],["city","dhanbad"],["state","jharkhand"]]
+
+    //formEntries()
+    const arr = ['a' => 1, 'b' => 2];
+    const obj = object.formEntries(arr);
+    console.log(obj);
+    let someValue = "firstName";
+    let persone = {
+        [someValue]: "priyanka",
+    };
+    console.log(persone);
+
+
+    let myobj = {
+        sayhello() {
+            console.log("hellllo");
+        }
+    };
+
+
+    //for ...of loop'
+    //itrate
+    const arr = [1, 2, 3, 4, 5];
+    for (let num of arr) {
+        console.log(num);
+    }
+
+    const st = "priyana singh";
+    for (let ch of st) {
+        console.log(ch);
+    }
+
+    //update
+    const tempArr = [];
+    for (let arr of tempArr) {
+        arr += 1;
+        tempArr.push(arr);
+    }
+
+    arr2 = tempArr;
+    console.log(arr2);
+    //class
+
+    class Person {
+        constructor(name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+        sayHello() {
+            return `hi! I'm ${this.name} ,${this.year }old ' ${gender}`;
+        }
+
+        static callStatic
+
+    };
+
+    let newPerson = new Person("priyanka ", 23, "F");
+    console.log(newPerson.sayHello());
+    //inheritance
+    class PersonEdu extends Person {
+        constructor(name, age, gender, education) {
+            super(name, age, gender);
+            this.education = education;
+
+        }
+
+    };
+
+    let newPerson = new PersonEdu("priy", 25, "F", "RSVM");
+    newPerson.education;
+    newPerson.start();
+
+    //import/export
+
+    //file1.js
+
+    export sayHello = "hello world";
+    export say = "hi";
+
+    //file2.js
+    import {
+        sayHello
+    } from "./file1.js";
+    import {
+        sayHi
+    } from "./file1.js";
+    //or
+    import {
+        sayHello as Hello
+    } from "./file.js";
+    import {
+        sayHi as Hi
+    } from "./file1.js";
+    //or
+    import * from "./file1.js";
+    //default
+    //file1.js
+    export default sayHello = "hello world";
+    //file2.js
+    import sayHello from "./file1.js";
+    //class export
+    class Vehical {
+        constructor(make, model, year) {
+            this.make = make;
+            this.model = model;
+            this.year = year;
+        }
+        start() {
+            return ` ${this.make} ${this.model} ENGINE START`;
+        }
+    }
+    export default Vehical;
+
+    //car.js
+    import Vehical from "./vehical.js";
+    class car extends Vehical {
+        constructor(make, model, year, numWheel) {
+            super(make, model, year);
+            this.numWheel = 4;
+
+        }
+
+    }
+
+    let newCar = new Car("honda", "civil", 2019);
+    newCar.numWheel;
+    newCar.start();
+    //Hash map
+    let myMap = new Map;
+    myMap.set(1, "something");
+    myMap.set(false, "something");
+    myMap.set([1, 2, 3], "something");
+    myMap.set({
+        1: "abc",
+        "something"
+    });
+
+    myMap.delete(false);
+    myMap.has(1);
+    myMap.size;
+    myMap.get(1);
+    myMap.clear();
+    .keys();
+    .values();
+
+    for (let [key, value] of myMap) {
+        console.log(key + '=' + value);
+    };
+
+    for (let key of myMap.key()) {
+        console.log(key);
+    };
+    for (let value of myMap.values) {
+        console.log(values);
+    };
+    //set
+    const mySet = new Set([1, 2, 2, 4, 4, 6]); //{1,2,4,6}
+    mySet.add(5);
+    mySet.has(3);
+    mySet.size();
+    mySet.delete();
+
+
+    //generator
+    function* genValues() {
+        yield "first";
+        yield "second";
+        yield "third";
+    };
+
+    let myGer = genValues();
+    myGer.next();
+    myGer.next().value
+    myGer.next().done
+    myGer.next()
+
+
+
+    //handalimg error(try , catch , throw , finally)
+
+    try {
+        undefinedFunction();
+
+    } catch (err) {
+        console.log("the error is" + err); //refrenceError
+    }
+
+    //errors- EvalError , RangeError , RefenceError , SyntaxError , TypeError ,URLError
+
+    try {
+        throw new ReferenceError("this is customizes error ");
+    } catch (err) {
+        if (err instanceof ReferenceError) {
+            console.log(this code is run when their is ReferenceError);
+        } else {
+            console.log("this code is run when some other error");
+
+        }
+    } finally {
+        console.log("this code is run no matter what");
+    }
+
+
+    //promise
+
+
+    const homeWork = new Promise(
+        function(resolve, reject) {
+            let isDone = false;
+            if (isDone) {
+                setTimeout(function() {
+                    resolve("is done");
+                }, 2000)
+            } else {
+                setTimeout(function() {
+                    reject(is not done);
+
+                }, 1000)
+            }
+        }
+    );
+
+    homeWork.then(
+        function(result) {
+            console.log(result);
+        }
+    ).catch(function(result) {
+        console.log(result);
+    })
+
+
+    //promise chain
+
+
+
+
+    // async /await
+    async function myFun() {
+        return "this is a promise";
+
+    }
+    myFun().then((val) => {
+        console.log(val)
+    });
+
+    async function myFun() {
+        isDone = false;
+        if (isDone) {
+            return ("is done");
+        } else {
+            throw "is not done";
+        }
+
+    }
+
+
+    myFun().then((val) => {
+        console.log(val)
+    }).catch((val)) => {
+        console.log(val)
+    };
+
+
+    //await
+
+    async myFun() {
+        let myPromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(done), 2000
+            });
+
+        });
+        let result = await myPromise;
+        return result;
+    }
+    myFun().then((val) => {
+        console.log(val)
+    }).catch((val)) => {
+        console.log(val)
+    };
+</script>
